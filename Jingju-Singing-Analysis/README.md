@@ -6,7 +6,7 @@
 - **_banshi_**: *manban*, *sanyan*, *zhongsanyan*, *kuaisanyan*, *yuanban*, *erliu*, *liushui*, *kuaiban*
 - **_ju_**: s (opening line in *xipi*), s1 (type 1 of opening line in *erhuang*), s2 (type 2 of opening line in *erhuang*), x (closing line)
 
-The code is written in Python 3.5.2.
+The code is written in **Python 3.5.2** and using the [**music21** toolkit](http://web.mit.edu/music21/).
 
 These tools are designed to work with the MusicXML scores from the Jingju Music Scores collection v.x.x.x. The lines_data.csv file, containing annotations for these scores, should be in the same folder as the MusicXML scores. This collection is available on demand for research purposes contacting the authors.
 
