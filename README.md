@@ -2,7 +2,7 @@
 
 This is a collection of tools for extracting statistical information from the Jingju Music Scores collection. This collection is available for research purposes; to access it, please contact Rafael Caro Repetto (rafael.caro@upf.edu)
 
-The **Jingju-Singing-Analysis** folder contains code for extracting statistical information about the singing line in arias of the Jingju Music Scores collection. This code and exploratory results (also included in the folder) have been presented in
+The **Jingju-Singing-Analysis** folder contains code for extracting statistical information about singing lines in arias of the Jingju Music Scores collection. This code and exploratory results (also included in the folder) have been presented in
 
 - R. Caro Repetto and X. Serra (2017) "A collection of music scores for corpus based jingju singing research," *Proc. of the 18th International Society for Music Information Retrieval*, Suzhou, China
 
