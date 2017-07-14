@@ -29,4 +29,4 @@ Rafael Caro Repetto (rafael.caro@upf.edu)
  The Jingju Tones Analysis code is licensed under the terms of the GNU Affero General Public License (v3 or later).
 
 ## Acknowledgements
-The creation of this code is funded by the European Research Council under the European Union’s Seventh Framework Program, as part of the CompMusic project (ERC grant agreement 267583).
+The creation of this code is funded by the European Research Council under the European Union’s Seventh Framework Program (FP7/2007-2013), as part of the CompMusic project (ERC grant agreement 267583).
