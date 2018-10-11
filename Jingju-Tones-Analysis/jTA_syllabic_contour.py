@@ -35,14 +35,64 @@ if __name__=='__main__':
                   'erliu', 'liushui', 'kuaiban']
     default_ju = ['s', 's1', 's2', 'x']
 
-    parser = argparse.ArgumentParser(description='Print a table with the analysis of the syllabic contour of the syllables from all the lines that match the given search parameters. If none given, the whole collection is used')
-    parser.add_argument('path', help='Path to the directory file with the scores and the lines_data.csv file')
-    parser.add_argument('-hd', '--hangdang', nargs='*', help='Restrict the search to the given role-type. Laosheng and dan given by default', default=default_hd)
-    parser.add_argument('-sq', '--shengqiang', nargs='*', help='Restrict the search to the given shengqiang. Erhuang and xipi given by default', default=default_sq)
-    parser.add_argument('-bs', '--banshi', nargs='*', help='Restrict the search to the given shengqiang. All of them given by default.', default=default_bs)
-    parser.add_argument('-l', '--line', nargs='*', help='Restrict the search to the given shengqiang. S1, s2, s and x given by default', default=default_ju)
-    parser.add_argument('-fn', '--filename', help='Path to the file to save the results')
-    parser.add_argument('-q', '--query', nargs=2, help='Show the score of the line that contains syllables that satisfy the two query criteria, tone and contour; for example: 1 A')
+    parser = argparse.ArgumentParser(description='Analyse the syllabic '\
+                                                 'contour of the syllables '\
+                                                 'from the lines in the '\
+                                                 'Jingju Music Scores '\
+                                                 'Collection that match the '\
+                                                 'given criteria. Print a '\
+                                                 'table in the console with '\
+                                                 'the results. If a tsv file '\
+                                                 'name and path is given to '\
+                                                 'the filename argument, the '\
+                                                 'resuts are saved in that '\
+                                                 'file.')
+    parser.add_argument('path', help='Path to the directory containing the '\
+                                     'lines_data.csv file and the MusicXML '\
+                                     'scores of the Jingju Music Scores '\
+                                     'Collection')
+    parser.add_argument('-hd', '--hangdang', nargs='*', help='Restrict the '\
+                                                             'search to the '\
+                                                             'given role-type'\
+                                                             '. Laosheng and '\
+                                                             'dan given by '
+                                                             'default',
+                        default=default_hd)
+    parser.add_argument('-sq', '--shengqiang', nargs='*', help='Restrict the '\
+                                                               'search to the'\
+                                                               ' given '\
+                                                               'shengqiang. '\
+                                                               'Erhuang and '\
+                                                               'xipi given by'\
+                                                               ' default',
+                        default=default_sq)
+    parser.add_argument('-bs', '--banshi', nargs='*', help='Restrict the '\
+                                                           'search to the '\
+                                                           'given banshi. All'\
+                                                           ' the banshi '\
+                                                           'present in the '\
+                                                           'Jingju Music '\
+                                                           'Scores Collection'\
+                                                           ' given by '\
+                                                           'default',
+                        default=default_bs)
+    parser.add_argument('-l', '--line', nargs='*', help='Restrict the search '\
+                                                        'to the given line '\
+                                                        'types. S1, s2, s and'\
+                                                        ' x given by default',
+                        default=default_ju)
+    parser.add_argument('-fn', '--filename', help='Path and name of the tsv '\
+                                                  'file to save the results')
+    parser.add_argument('-q', '--query', nargs=2, help='Open the score in the'\
+                                                       ' display format '\
+                                                       'defined by the user '\
+                                                       'in music21 that '\
+                                                       'contains lines with '\
+                                                       'syllables that '\
+                                                       'satisfy the two query'\
+                                                       ' criteria, tone and '\
+                                                       'contour; for example:'\
+                                                       ' 1 A')
 
     args = parser.parse_args()
     

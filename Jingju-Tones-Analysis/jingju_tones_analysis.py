@@ -39,10 +39,11 @@ def toneMaterialPerLine(linesData, hd=['laosheng', 'dan'], sq=['erhuang',
     '''str, [str], [str], [str], [str] --> [{str:list}, [str[[str, float,
                                             float, str, str, str, str]]]
    
-    Given the path of the linesData file, and a list of the hangdang,
-    shengqiang, banshi and line type to look for, it returns a list with
-    information from each line that matches the search criteria. The structure
-    of this list is as follows
+    Given the path to the lines_data.csv file, that should be stored in the
+    same folder as the MusicXML scores of the Jingju Music Scores Collection,
+    and a list of the hangdang, shengqiang, banshi and line type to look for,
+    it returns a list with information from each line that matches the search
+    criteria. The structure of this list is as follows
         dictionary with the included bs, hd, ju, sq
         score-lists: a list for each score that contains a line that matches
                      the search criteria. It includes:
@@ -136,10 +137,11 @@ def toneMaterialPerJudou(linesData, hd=['laosheng', 'dan'], sq=['erhuang',
     '''str, [str], [str], [str], [str] --> [{str:list}, [str[[str, float,
                                             float, str]]]
    
-    Given the path of the linesData file, and a list of the hangdang,
-    shengqiang, banshi and line type to look for, it returns a list with
-    information from each judou that matches the search criteria. The structure
-    of this list is as follows
+    Given the path to the lines_data.csv file, that should be stored in the
+    same folder as the MusicXML scores of the Jingju Music Scores Collection,
+    and a list of the hangdang, shengqiang, banshi and line type to look for,
+    it returns a list with information from each judou that matches the search
+    criteria. The structure of this list is as follows
         dictionary with the included bs, hd, ju, sq
         score-lists: a list for each score that contains a line that matches
                      the search criteria. It includes:
@@ -155,7 +157,7 @@ def toneMaterialPerJudou(linesData, hd=['laosheng', 'dan'], sq=['erhuang',
                     tones (str)
     '''
 
-    # Get the path of the folder shared by the linesData file and the xml
+    # Get the path of the folder shared by the lines_data.csv file and the xml
     # scores
     path = linesData[:linesData.rfind('/')+1]
     
@@ -727,10 +729,20 @@ def pairwiseRelationship(material, relationship=[1, 0], filename=None,
 ###############################################################################
 
 def findVoiceParts(score):
-    '''music21.stream.Score --> [music21.stream.Part]
+    '''
+    It takes a score and searches which of the parts is the one containing
+    lyrics, and therefore, the one containing singing voice.
     
-    Given a music21.stream.Score with one or more parts, it returns a list of
-    the parts that contain lyrics
+    Parameter:
+    - score -- a music21.strem.Score object
+    
+    It returns a list with all the parts that contain lyrics
+    
+    For example:
+    >>> import music21
+    >>> s = music21.converter.parse('sdxp-WoHeNi-SiLangTanMu.xml')
+    >>> findVoiceParts(s)
+    [<music21.stream.Part Piano>, <music21.stream.Part Piano>]
     '''
     
     voiceParts = []
@@ -751,9 +763,23 @@ def findVoiceParts(score):
 
     
 def floatOrFraction(strValue):
-    '''str --> fractions.Fraction or float
-    Given a numeric value as a string, it returns it as a fractions.Fraction
-    object if contains '/' on it, or as a float otherwise
+    '''
+    It takes a string with a numerical value and analyses if it is a float or
+    a fractions.Fraction object.
+    
+    Parameter:
+    - strValue -- str, a numercial value
+    
+    It returns a flot or a fractions.Fraction object. If the input is an empty
+    string, it returns None
+    
+    For example:
+    >>> floatOrFraction('1277/6')
+    Fraction(1277, 6)
+    >>> floatOrFraction('164')
+    164.0
+    >>> floatOrFraction('')
+    >>> 
     '''
     if '/' in strValue:
         numerator = int(strValue.split('/')[0])
@@ -879,10 +905,11 @@ def countLineType(linesData, hd=['laosheng', 'dan'], sq=['erhuang',
                         'kuaiban'], ju = ['s', 's1', 's2', 'x']):
     '''str, [str], [str], [str], [str] --> [{str:list}, [str,[[{str:str},str]]]
    
-    Given the path of the linesData file, and a list of the hangdang,
-    shengqiang, banshi and line type to look for, it returns a list with the
-    lyrics from the lines that meet the search criteria. The lyrics are given
-    per line and per each judou.
+    Given the path to the lines_data.csv file, that should be stored in the
+    same folder as the MusicXML scores of the Jingju Music Scores Collection,
+    and a list of the hangdang, shengqiang, banshi and line type to look for,
+    it returns a list with the lyrics from the lines that meet the search
+    criteria. The lyrics are given per line and per each judou.
 
     If any of the four search concepts is indifferent, don't input it in when
     calling the function, so that it will retrive all the instances. For
@@ -911,7 +938,7 @@ def countLineType(linesData, hd=['laosheng', 'dan'], sq=['erhuang',
     count for the total of lines retrieved.
     '''
 
-    # Get the path of the folder shared by the linesData file and the xml
+    # Get the path of the folder shared by the lines_data.csv file and the xml
     # scores
     path = linesData[:linesData.rfind('/')+1]
     
@@ -1017,9 +1044,11 @@ def getTones(linesData, hd=['laosheng', 'dan'], sq=['erhuang', 'xipi'],
                     'yuanban', 'erliu', 'liushui', 'kuaiban'], ju = ['s', 's1',
                     's2', 'x']):
     '''str, [str], [str], [str], [str] --> str
-    Given the path of the linesData file, and a list of the hangdang,
-    shengqiang, banshi and line type to look for, it returns a string with the
-    score name and intercalated lyrics and tones for the lines found.
+    Given the path to the lines_data.csv file, that should be stored in the
+    same folder as the MusicXML scores of the Jingju Music Scores Collection,
+    and a list of the hangdang, shengqiang, banshi and line type to look for,
+    it returns a string with the score name and intercalated lyrics and tones
+    for the lines found.
     '''
     with open(linesData, 'r', encoding='utf-8') as f:
         data = f.readlines()
