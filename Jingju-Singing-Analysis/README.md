@@ -1,35 +1,62 @@
 # Jingju Singing Analysis
 
-**Jingju Singing Analysis** is a collection of tools for extracting statistical information about singing lines in arias of the **Jingju Music Scores collection**. In order to research the building elements of jingju musical system, the extracted information can be restricted to any combination of the *hangdang* (role type), *shengqiang*, *banshi* and *ju* (line type) contained in the scores collection:
-- **_hangdang_**: *laosheng*, *dan*
-- **_shengqiang_**: *erhuang*, *xipi*
-- **_banshi_**: *manban*, *sanyan*, *zhongsanyan*, *kuaisanyan*, *yuanban*, *erliu*, *liushui*, *kuaiban*
-- **_ju_**: s (opening line in *xipi*), s1 (type 1 of opening line in *erhuang*), s2 (type 2 of opening line in *erhuang*), x (closing line)
+The **Jingju Singing Analysis** code is a collection of tools for extracting statistical and quantitative information from machine readable jingju music scores, having the melodic line as basic analysis unit. It is tailored to be used with the [**Jingju Music Scores Collection** (**JMSC**)](https://doi.org/10.5281/zenodo.1285612), and for the research purposes of the PhD thesis *The musical dimension of
+Chinese traditional theatre: An analysis from computer aided musicology* (Caro 2018, see below). The code computes the following information:
+- pitch histograms per line,
+- pitch histograms per line sections,
+- non directed interval histograms,
+- directed interval histograms,
+- cadential notes,
+- melodic density as notes, and
+- melodic density as durations.
 
-The code is written in **Python 3.5.2** and using the [**music21** toolkit](http://web.mit.edu/music21/).
+The results are returned in the form of plots and tables. Each of these information types can be computed for any combination of the jingju music elements covered by the **JMSC**. The instances of these elements that can be input as parameters to the functions included in the code are the following ones (as they should be written when calling a function):
+- role type: `laosheng`, `dan`
+- *shengqaing*: `erhuang`, `xipi`
+- *banshi*: `manban`, `sanyan`, `zhongsanyan`, `kuaisanyan`, `yuanban`, `erliu`, `liushui`, `kuaiban`
+- line type: `s` for opening line in *xipi*, `s1` for the long version of the opening line in *erhuang*, `s2` for the short version of the opening line in *erhuang*, `x` for closing line
 
-These tools are designed to work with the MusicXML scores from the **Jingju Music Scores collection v.x.x.x**. The lines_data.csv file, containing annotations for these scores, should be in the same folder as the MusicXML scores. This collection is available on demand for research purposes contacting the authors.
+## Description of the code
+The **Jingju Singing Analysis** code is comprised by the following two scripts:
+- `jingju_singing_analysis.py` contains a collection of main and auxiliary functions for analysing and browsing the **JMSC**. The five main functions are the ones used for extracting the seven types of information listed above:
+ - `pitchHistogram` computes the pitch histograms per line,
+ - `pitchHistogramLineJudou` computes the pitch histogrmas per line sections,
+ - `intervalHistogram` computes the non directed interval histograms and the directed interval histograms,
+ - `cadentialNotes` analyses the cadential notes, and
+ - `melodicDensity` analyses the melodic density as notes and the melodic density as durations.
 
-The **plots** folder contains a series of plots obtained as an exploratory analysis of the **Jingju Music Scores collection** using the Jingju Singing Analysis tools.
 
-The code and some of results contained in the **plots** folder are presented and discussed in
+- `JMSC_plots.py` can be run from the terminal in order to reproduce all the plots and tables used in Caro (2018). It can also be used to compute a subset of information types listed above. All these plots and tables are also available in the **plots** folder of this repository.
 
-- R. Caro Repetto and X. Serra (2017) "A collection of music scores for corpus based jingju singing research," *Proc. of the 18th International Society for Music Information Retrieval*, Suzhou, China
+## Using the code
+The **Jingju Singing Analysis** code is written in Python 3.5.2, so for its use it is required a version of Python 3.
 
-## Description of the scripts
+Before using the code, the dependencies listed in the requirements.txt file. This can be done from the terminal (using the package managre pip), by executing the following command from the directory where the requirements.txt file is stored:
 
-- **jingju_singing_analysis.py**: collection of functions for extracting several features from the Jingju Music Scores collection. Please refer to the documentation inside the code for further details.
+`pip install -r requirements.txt`
 
-- **jSA_pitch_histogram.py**: creates a PNG file containing a pitch histogram for the given combination of jingju musical system elements. The script can be run from the command line. For more detailed information and further options, please refer to the help documentation in the code (`>python jSA_pitch_histogram.py -h`)
+Since the code is created to be used with the **JMSC**, the lines_data.csv should be saved in the same folder as the MusicXML scores of the collection.
 
-- **jSA_interval_histogram.py**: creates a PNG file containing an interval histogram for the given combination of jingju musical system elements. The script can be run from the command line. For more detailed information and further options, please refer to the help documentation in the code (`>python jSA_interval_histogram.py -h`)
+To use the `JMSC_plots.py` script from the terminal, the following command should be executed from the directory where this script is saved:
 
-- **jSA_cadential_notes.py**: creates a PNG file containing a bar chart with the percentage of cadential notes for each section of the opening and closing lines from the given combination of jingju musical system elements. The script can be run from the command line. For more detailed information and further options, please refer to the help documentation in the code (`>python jSA_cadential_notes.py -h`)
+`python JMSC_plots.py PATH\lines_data.csv`
 
-- **jSA_melodic_density.py**: creates a PNG file containing a boxplot for each score that matches the given combination of jingju musical system elements, plus one boxplot for the all these scores aggregated. The script can be run from the command line. For more detailed information and further options, please refer to the help documentation in the code (`>python jSA_melodic_density.py -h`)
+where `PATH` should be the path to the lines_data.csv file.
+
+The `JMSC_plots.py` script offer extra options, in order to select a subsect of information types or specifying a directory for saving the returned plots and tables. For a detailed description of how using the code, including these options, the following command can be executed from the directory where this script is saved:
+
+`python JMSC_plots.py -h`
+
+For the use of the functions in the `jingju_singing_analysis.py`, a detailed description of each of them is available in their respective docstrings.
+
+## Reference
+The Jingju Scores Analysis code is openly available for free use. If you use this code for a published work, please cite the following publication:
+
+- Caro Repetto, Rafael (2018) *The musical dimension of
+Chinese traditional theatre: An analysis from computer aided musicology*. PhD thesis, Universitat Pompeu Fabra, Barcelona, Spain.
 
 ## Contact
-Rafael Caro Repetto (rafael.caro@upf.edu)
+For further questions of comments, please contact Rafael Caro Repetto (rafael.caro@upf.edu)
 
 ## License
  The Jingju Singing Analysis code is licensed under the terms of the GNU Affero General Public License (v3 or later).

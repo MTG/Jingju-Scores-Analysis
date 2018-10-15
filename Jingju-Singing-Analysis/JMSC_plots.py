@@ -2,10 +2,15 @@
 
 
 
-# Jingju Singing Analysis is a collection of tools for the statistical analysis
-# of the singing melody in jingju music scores.
+# JMSC_plots.py is a script for reproducing with a single command line all the
+# plots and tables computed from the Jingju Music Scores Collection
+# (https://doi.org/10.5281/zenodo.1285612) and used in the following
+# publication:
+#   Caro Repetto, Rafael (2018) *The musical dimension of Chinese traditional
+#   theatre: An analysis from computer aided musicology*. PhD thesis,
+#   Universitat Pompeu Fabra, Barcelona, Spain.
 #
-# Copyright (C) 2017 Music Technology Group, Universitat Pompeu Fabra
+# Copyright (C) 2018 Music Technology Group, Universitat Pompeu Fabra
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published

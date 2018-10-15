@@ -1,20 +1,26 @@
 # Jingju Scores Analysis
 
-This is a collection of tools for extracting statistical information from the **Jingju Music Scores collection**. This collection is available for research purposes; to access it, please contact Rafael Caro Repetto (rafael.caro@upf.edu)
+This is a collection of tools for automatically extracting statistical and quantitative information from the [**Jingju Music Scores Collection** (**JMSC**)](https://doi.org/10.5281/zenodo.1285612). The information can be restricted to any combination of the four elements of the jingju musical system, namely role type, *shengqiang*, *banshi* and line type.
 
-The **Jingju-Singing-Analysis** folder contains code for extracting statistical information about singing lines in arias of the **Jingju Music Scores collection**. This code and exploratory results (also included in the folder) are presented in
+## Content
 
-- R. Caro Repetto and X. Serra (2017) "A collection of music scores for corpus based jingju singing research," *Proc. of the 18th International Society for Music Information Retrieval*, Suzhou, China
+The **Jingju-Singing-Analysis** folder contains code for extracting statistical and quantitative information about singing lines from arias of the **JMSC**. This information is returned in the form of tables and plots.
 
-The **Jingju-Tones-Analysis** folder contains code for extracting statistical information about the relationship of linguistic tones and melody in arias of the **Jingju Music Scores collection**. This code and corresponding results are presented in
+The **Jingju-Tones-Analysis** folder contains code for analysing the relationship between linguistic tones and melody in singing lines from arias of the **JMSC**, considering the two main relationship types, namely syllabic contour and pairwise relationship.
 
-- R. Caro Repetto, S. Zhang, and X. Serra (2017) "Quantitative analysis of the relationship between linguistic tones and melody in jingju using music scores," *Proc. of the 4th International Digital Libraries for Musicology workshop*, Shanghai, China [submitted]
+Detailed description of each code and instructions about how to use it is available in the README files in each folder.
+
+ ## Reference
+ The Jingju Scores Analysis code is openly available for free use. If you use this code, please cite the following publication:
+
+ - Caro Repetto, Rafael (2018) *The musical dimension of
+ Chinese traditional theatre: An analysis from computer aided musicology*. PhD thesis, Universitat Pompeu Fabra, Barcelona, Spain.
 
 ## Contact
 Rafael Caro Repetto (rafael.caro@upf.edu)
 
 ## License
- The Jingju Scores Analysis code is licenced under the terms of the GNU Affero General Public License (v3 or later).
+ The Jingju Scores Analysis code is licensed under the terms of the GNU Affero General Public License (v3 or later).
 
 ## Acknowledgements
 The creation of this code is funded by the European Research Council under the European Union’s Seventh Framework Program (FP7/2007-2013), as part of the CompMusic project (ERC grant agreement 267583).

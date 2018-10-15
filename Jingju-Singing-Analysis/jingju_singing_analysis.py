@@ -2,10 +2,11 @@
 
 
 
-# Jingju Singing Analysis is a collection of tools for the statistical analysis
-# of the singing melody in jingju music scores.
+# Jingju Singing Analysis is a collection of tools for automatically extracting
+# statistical and quantitative information from the Jingju Music Scores
+# Collection (https://doi.org/10.5281/zenodo.1285612).
 #
-# Copyright (C) 2017 Music Technology Group, Universitat Pompeu Fabra
+# Copyright (C) 2018 Music Technology Group, Universitat Pompeu Fabra
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -47,14 +48,14 @@ def collectLineMaterial(linesData,
     it returns information for accessing all the lines that meet the input
     criteria. If for any of the input instances no line is retrieved, a warning
     message indicates so.
-    
+
     Paramenters:
     - linesData -- str, path to the lines_data.csv file
     - hangdang -- [str], list of role types
     - shengqiang -- [str], list of shengqiang
     - banshi -- [str], list of banshi
     - judou -- [str], list of line types
-    
+
     It returns a list with the following elements:
     - a dictionary with the instances of each element for which a line is
           retrived. The keys are 'hd' for role type, 'sq' for shengqiang, 'bs'
@@ -66,16 +67,16 @@ def collectLineMaterial(linesData,
                 these lists includes a list of two floats representing the
                 starting and ending offset of a retrived line that part from
                 that score
-    
+
     For example:
-    
+
     >>> collectLineMaterial('path-to-lines_data.csv', hangdang=['dan'], shengqi
         ang=['xipi'], banshi=['erliu'])
 
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
@@ -97,13 +98,13 @@ def collectLineMaterial(linesData,
        [609.0, 627.0],
        [639.0, 650.0]]]]
     '''
-    
+
     # Check that the inputted info is correct input
     hd = checkInput(hangdang, 'hd')
     sq = checkInput(shengqiang, 'sq')
     bs = checkInput(banshi, 'bs')
     ju = checkInput(judou, 'ju')
-    
+
     print('\nRetrieving lines that meet the given criteria...')
 
     # Get the path of the folder shared by the linesData file and the xml
@@ -117,7 +118,7 @@ def collectLineMaterial(linesData,
         data = f.readlines()
 
     material = []
-    
+
     found_lines = 0
 
     # Search information
@@ -191,14 +192,14 @@ def collectLineJudouMaterial(linesData,
     it returns information for accessing all the line sections that meet the
     input criteria. If for any of the input instances no line is retrieved, a
     warning message indicates so.
-    
+
     Paramenters:
     - linesData -- str, path to the lines_data.csv file
     - hangdang -- [str], list of role types
     - shengqiang -- [str], list of shengqiang
     - banshi -- [str], list of banshi
     - judou -- [str], list of line types
-    
+
     It returns a list with the following elements:
     - a dictionary with the instances of each element for which a line is
           retrived. The keys are 'hd' for role type, 'sq' for shengqiang, 'bs'
@@ -213,20 +214,20 @@ def collectLineJudouMaterial(linesData,
                 ending offset of a retrived line that part from that score. If
                 a particular line misses one section, an empty list for that
                 particular section is returned
-    
+
     For example:
-    
+
     >>> collectLineJudouMaterial('path-to-lines_data.csv', hangdang=['dan'], sh
         engqiang=['xipi'], banshi=['erliu'])
 
     Retrieving sections for lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
-    Out[10]: 
+    Out[10]:
     [{'bs': ['erliu'], 'hd': ['dan'], 'ju': ['s', 'x'], 'sq': ['xipi']},
      ['../../Jingju-Music-Scores/MusicXML scores/daxp-ChunQiuTing-SuoLinNang.xm
       l',
@@ -245,13 +246,13 @@ def collectLineJudouMaterial(linesData,
        [[609.0, 611.25], [612.0, 618.0], [619.5, 627.0]],
        [[639.0, 641.5], [642.0, 644.5], [645.0, 650.0]]]]]
     '''
-    
+
     # Check that the inputted info is correct input
     hd = checkInput(hangdang, 'hd')
     sq = checkInput(shengqiang, 'sq')
     bs = checkInput(banshi, 'bs')
     ju = checkInput(judou, 'ju')
-    
+
     print('\nRetrieving sections for lines that meet the given criteria...')
 
     # Get the path of the folder shared by the linesData file and the xml
@@ -265,7 +266,7 @@ def collectLineJudouMaterial(linesData,
         data = f.readlines()
 
     material = []
-    
+
     found_lines = 0
 
     # Search information
@@ -326,7 +327,7 @@ def collectLineJudouMaterial(linesData,
             material[-1][-1][-1].append(ju3)
 
     printingFound(material[0], hangdang, shengqiang, banshi, judou,
-                  found_lines)    
+                  found_lines)
 
     # Delete empty lists
     score2remove = []
@@ -374,7 +375,7 @@ def pitchHistogram(linesData,
     criteria. If a path to an image file is given, a plot is returned. If for
     any of the input instances no line is retrieved, a warning message
     indicates so.
-    
+
     Parameters:
     - linesData -- str, path to the lines_data.csv file
     - hangdang -- [str], list of role types
@@ -402,24 +403,24 @@ def pitchHistogram(linesData,
     - yticks_fontsize -- int, size of the font for the y axis' ticks
     - xLabel_fontsize -- int, size of the font for the x axis' label
     - yLabel_fontsize -- int, size of the font for the y axis' label
-    
+
     It returns an ordered list containing a list for each of the pitches
     computed in the histogram, containing a string for the pitch name and a
     float for the (normalized) count of that pitch in the histogram. If a path
     to a file is input to the filename parameter, an image is also returned.
-    
+
     For example:
     >>> pitchHistogram('path-to-lines_data.csv', hd=['dan'], sq=['xipi'], bs=['
         erliu'])
 
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
-    
+
     Computing pitch histogram...
     Processing scores:
             Parsing daxp-ChunQiuTing-SuoLinNang.xml
@@ -437,7 +438,7 @@ def pitchHistogram(linesData,
      ['F#5', 0.017897091722595078],
      ['G#5', 0.00089485458612975394]]
     '''
-    
+
     material = collectLineMaterial(linesData, hangdang=hd, shengqiang=sq,
                                    banshi=bs, judou=ju)
 
@@ -546,7 +547,7 @@ def pitchHistogramLineJudou(linesData,
     meet the input criteria. If a path to an image file is given, a plot is
     returned. If for any of the input instances no line is retrieved, a warning
     message indicates so.
-    
+
     Parameters:
     - linesData -- str, path to the lines_data.csv file
     - hangdang -- [str], list of role types
@@ -574,7 +575,7 @@ def pitchHistogramLineJudou(linesData,
     - yticks_fontsize -- int, size of the font for the y axis' ticks
     - xLabel_fontsize -- int, size of the font for the x axis' label
     - yLabel_fontsize -- int, size of the font for the y axis' label
-    
+
     It returns a list containing an ordered list for each the three line
     sections. Each of these three lists contains a list for each of all the
     pitches computed. Each of these lists contains a string for the pitch name
@@ -583,19 +584,19 @@ def pitchHistogramLineJudou(linesData,
     pitch is still included, containing the pitch name and '--' instead of a
     value. If a path to a file is input to the filename parameter, an image is
     also returned including a vertical histogram for each line section.
-    
+
     For example:
     >>> pitchHistogramLineJudou('path-to-lines_data.csv', hd=['dan'], sq=['xipi
         '], bs=['erliu'])
 
     Retrieving sections for lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
-    
+
     Computing pitch histograms...
     Processing scores:
             Parsing daxp-ChunQiuTing-SuoLinNang.xml
@@ -635,7 +636,7 @@ def pitchHistogramLineJudou(linesData,
       ['F#5', 0.015496809480401094],
       ['G#5', 0.0018231540565177757]]]
     '''
-    
+
     material = collectLineJudouMaterial(linesData, hangdang=hd, shengqiang=sq,
                                         banshi=bs, judou=ju)
 
@@ -695,7 +696,7 @@ def pitchHistogramLineJudou(linesData,
     print('Histograms computed.')
 
     jps = [j1p, j2p, j3p]
-    
+
     jps_plotting = []
     pre_yLab_general = []
 
@@ -710,11 +711,11 @@ def pitchHistogramLineJudou(linesData,
         yPositions = np.array([p[1] for p in sortedPitches])
         yLabels = [p[0] for p in sortedPitches]
         xValues = np.array([jp[l] for l in yLabels])
-    
+
         # Setting the parameters for plotting for first judou
         xValues, limY, xLabel, col, h = plottingParameters(material, count,
                                                             xValues)
-        
+
         jps_plotting.append({'xValues': xValues, 'xLabel': xLabel,
                             'yPositions': yPositions, 'yLabels': yLabels,
                             'limY': limY, 'col': col,
@@ -741,13 +742,13 @@ def pitchHistogramLineJudou(linesData,
                 max_val = max(j['xValues'])
                 if max_val > limX[1]:
                     limX[1] = max_val
-            
+
         ticksX = np.round(np.arange(limX[0], limX[1], limX[1]/5), 1)
-            
+
         width = 0.8
-        
+
         plt.figure()
-        
+
         for i in range(len(jps_plotting)):
             jp = jps_plotting[i]
             plt.subplot(131+i)
@@ -771,13 +772,12 @@ def pitchHistogramLineJudou(linesData,
             plt.ylim(jp['limY'][0], jp['limY'][1])
             plt.xticks(ticksX, ticksX, rotation=90, fontsize=xticks_fontsize)
             plt.xlim(limX[0], limX[1])
-    
+
         plt.tight_layout()
         if title != None:
             plt.suptitle(title, fontsize=title_fontsize)
             plt.subplots_adjust(top=1-title_fontsize/300)
-        plt.savefig(filename)    
-#        plt.show()
+        plt.savefig(filename)
         print('"' + filename + '" plotted and saved.')
 
     # List to return
@@ -790,7 +790,7 @@ def pitchHistogramLineJudou(linesData,
             else:
                 d.append([label, '--'])
         results.append(d)
-        
+
     if not len(results[0]) == len(results[1]) == len(results[2]):
         print('ERROR: There was a problem saving the results. The program '\
               'will exit')
@@ -826,7 +826,7 @@ def intervalHistogram(linesData,
     criteria. If a path to an image file is given, a plot is returned. If for
     any of the input instances no line is retrieved, a warning message
     indicates so.
-    
+
     Parameters:
     - linesData -- str, path to the lines_data.csv file
     - hd -- [str], list of role types
@@ -855,7 +855,7 @@ def intervalHistogram(linesData,
     - yticks_fontsize -- int, size of the font for the y axis' ticks
     - xLabel_fontsize -- int, size of the font for the x axis' label
     - yLabel_fontsize -- int, size of the font for the y axis' label
-    
+
     It returns an ordered list containing a list for each of the invervals
     computed in the histogram, containing a string for the interval name and a
     float for the (normalized) count of that interval in the histogram. If a
@@ -867,23 +867,23 @@ def intervalHistogram(linesData,
     intervals are identified with a minus sign "-" between the quality and the
     number, so that "m-3" indicates a descending minor third. In this case, the
     absence of this minus sign indicates an ascending interval.
-    
+
     For example:
     >>> intervalHistogram(ln, hd=['dan'], sq=['xipi'], bs=['erliu'])
 
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
-    
+
     Computing interval histogram...
     Processing scores:
             Parsing daxp-ChunQiuTing-SuoLinNang.xml
             Parsing daxp-QiaoLouShang-HuangShanLei.xml
-    Histogram computed.    
+    Histogram computed.
     [['P1', 0.098321342925659472],
      ['m2', 0.088729016786570747],
      ['M2', 0.46762589928057552],
@@ -894,7 +894,7 @@ def intervalHistogram(linesData,
      ['m6', 0.016786570743405275],
      ['m7', 0.0047961630695443642]]
     '''
-    
+
     material = collectLineMaterial(linesData, hangdang=hd, shengqiang=sq,
                                    banshi=bs, judou=ju)
 
@@ -1028,7 +1028,7 @@ def cadentialNotes(linesData,
     an error message indicates so and asks the user for a correction. If a path
     to an image file is given, a plot is returned. If for any of the input
     instances no line is retrieved, a warning message indicates so.
-    
+
     Parameters:
     - linesData -- str, path to the lines_data.csv file
     - hd -- [str], list of role types
@@ -1045,7 +1045,7 @@ def cadentialNotes(linesData,
     - legend_fontsize -- int, size of the font for the labels in the legend
     - adjust_right_margin -- float, distance to the right margin of each line
           type's box, in percentage normalize to one.
-    
+
     It returns a dictionary with the following structure:
     - keys: str, line type, including 'Op. line' for opening line and 'Cl.
           line' for closing line (xipi), 'Op. l. 1' for opening line 1, 'Op. l.
@@ -1059,27 +1059,27 @@ def cadentialNotes(linesData,
                 (normalized) count of that pitch in the given line section.
     If a path to a file is input to the filename parameter, an image is also
     returned.
-    
+
     For example:
     >>> cadentialNotes(ln, hd=['dan'], sq=['xipi'], bs=['erliu'])
-    
+
     Counting cadential notes for opening lines...
-    
+
     Retrieving sections for lines that meet the given criteria...
-    
+
     6 lines were retrieved for the combination of dan, xipi, erliu and s.
-    
+
     Processing scores:
             Parsing daxp-ChunQiuTing-SuoLinNang.xml
             Parsing daxp-QiaoLouShang-HuangShanLei.xml
     Notes for opening lines counted.
-    
+
     Counting cadential notes for closing lines...
-    
+
     Retrieving sections for lines that meet the given criteria...
-    
+
     6 lines were retrieved for the combination of dan, xipi, erliu and x.
-    
+
     Processing scores:
             Parsing daxp-ChunQiuTing-SuoLinNang.xml
             Parsing daxp-QiaoLouShang-HuangShanLei.xml
@@ -1141,7 +1141,7 @@ def cadentialNotes(linesData,
 
     pre_result = {}
     result = {}
-    
+
     hd, sq, bs = checkInput_cn(hd, sq, bs)
 
     if sq == ['xipi']:
@@ -1209,9 +1209,8 @@ def cadentialNotes(linesData,
     if filename != None:
         print('\nPlotting...')
         plt.savefig(filename)
-#        plt.show()
         print('"' + filename + '" plotted and saved.')
-    
+
     # Final results:
     for line in pre_result:
         for s in pre_result[line]:
@@ -1245,7 +1244,7 @@ def melodicDensity(linesData,
     number of notes or as aggregated quarterLength duration of those notes. If
     a path to an image file is given, a plot is returned. If for any of the
     input instances no line is retrieved, a warning message indicates so.
-    
+
     Parameters:
     - linesData -- str, path to the lines_data.csv file
     - hd -- [str], list of role types
@@ -1264,7 +1263,7 @@ def melodicDensity(linesData,
     - yticks_fontsize -- int, size of the font for the y axis' ticks
     - xLabel_fontsize -- int, size of the font for the x axis' label
     - yLabel_fontsize -- int, size of the font for the y axis' label
-    
+
     It returns data for each of the scores from which a line is retrieved, as
     well as for the average of all scores. These data are returned in a
     dictionary with the following structure:
@@ -1281,18 +1280,18 @@ def melodicDensity(linesData,
           - 'outliers': [float]
     If a path to a file is input to the filename parameter, an image of a
     boxplot is also returned.
-    
+
     For example:
     >>> melodicDensity(ln, hd=['dan'], sq=['xipi'], bs=['erliu'])
-    
+
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
-    
+
     Computing melodic density...
     Processing scores:
             Parsing daxp-ChunQiuTing-SuoLinNang.xml
@@ -1322,7 +1321,7 @@ def melodicDensity(linesData,
       'score': 'average',
       'upper fence': 10.0}}
     '''
-    
+
     material = collectLineMaterial(linesData, hangdang=hd, shengqiang=sq,
                                    banshi=bs, judou=ju)
 
@@ -1440,7 +1439,7 @@ def melodicDensity(linesData,
         results[xLabels[i]] = {}
         results[xLabels[i]]['score'] = scores[i]
 
-    plt.figure()    
+    plt.figure()
     data = plt.boxplot(totalCount)
 
     # Collect all statistical information in the results dictionary
@@ -1470,7 +1469,6 @@ def melodicDensity(linesData,
     if filename != None:
         print('\nPlotting...')
         plt.savefig(filename)
-#        plt.show()
         print('"' + filename + '" plotted and saved.')
 
     return results
@@ -1488,20 +1486,20 @@ def checkInput(value, element):
     the pitchHistogram, pitchHistogramLineJudou, intervalHistogram, and
     melodicDensity functions. If a given instance is incorrect, it asks the
     user for a valid input.
-    
+
     Parameters:
     - value -- a list with the instances for a given element of the jingju
           musical system
     - element -- the corresponding element of the jingju musical system, with
           the following abbreviations: 'hd' for role type, 'sq' for shengqiang,
           'bs' for banshi, and 'ju' for line type
-    
+
     It returns a list with valid instances of the given element to be used in
     the aforementioned functions.
-    
+
     For example:
     >>> checkInput(['erhuan', 'xipi'], 'sq')
-    
+
     ACTION REQUIRED: "erhuan" is not a valid shengqiang. Valid inputs are erhua
     ng and xipi. Please enter a new input, "skip" to ignore this input, or "sto
     p" to quit the program: erhuang
@@ -1518,7 +1516,7 @@ def checkInput(value, element):
 
     for i in range(len(value)):
         inputs = ''
-        correct = corrects[element][1] 
+        correct = corrects[element][1]
         for j in range(len(correct)-1):
             inputs += correct[j] + ', '
         inputs = inputs[:-2] + ' and ' + correct[-1]
@@ -1536,7 +1534,7 @@ def checkInput(value, element):
                 break
             else:
                 value[i] = ans
-                
+
     if len(to_skip) == len(value):
         message = '\nERROR: after skipping incorrect values no input for ' +\
                   corrects[element][0] + ' is left. The program will exit.'
@@ -1546,7 +1544,7 @@ def checkInput(value, element):
     if len(to_skip) > 0:
         for k in to_skip:
             value.pop(k)
-    
+
     return value
 
 
@@ -1556,24 +1554,24 @@ def checkInput_cn(hangdang, shengqiang, banshi):
     It takes a list of instances for role type, shengqiang and banshi, and
     evaluates if they are valid to be used in the cadentialNotes function. If a
     given instance is incorrect, it asks the user for a valid input.
-    
+
     Parameters:
     - hangdang -- a list of role type instances
     - shengqiang -- a list of shengqiang instances
     - banshi -- a list of banshi instances
-    
+
     It returns three lists with valid instances for respectively role type,
     shengqiang and banshi to be used in the cadentialNotes function.
-    
+
     For example:
     >>> checkInput_cn(['dan'], ['erhuang, xipi'], ['yuanban', 'erliu'])
-    
+
     ERROR: Invalid shengqiang. This function only takes either "xipi" or "erhua
-    ng". Which shengqiang do you want to analyse? (To quit the program, please 
+    ng". Which shengqiang do you want to analyse? (To quit the program, please
     type "stop"): xipi
     (['dan'], ['xipi'], ['yuanban', 'erliu'])
     '''
-    
+
     # Check that the inputted parameters are correct
     ## Check hangdang is only one
     if len(hangdang) > 1:
@@ -1593,7 +1591,7 @@ def checkInput_cn(hangdang, shengqiang, banshi):
             hangdang = checkInput([ans], 'hd')
 
     ## Check shengqiang is correct
-    
+
     while shengqiang not in [['xipi'], ['erhuang']]:
         message = '\nERROR: Invalid shengqiang. This function only takes '\
                   'either "xipi" or "erhuang". Which shengqiang do you want '\
@@ -1606,7 +1604,7 @@ def checkInput_cn(hangdang, shengqiang, banshi):
 
     ##
     banshi = checkInput(banshi, 'bs')
-    
+
     return hangdang, shengqiang, banshi
 
 
@@ -1615,12 +1613,12 @@ def findVoiceParts(score):
     '''
     It takes a score and searches which of the parts is the one containing
     lyrics, and therefore, the one containing singing voice.
-    
+
     Parameter:
     - score -- a music21.strem.Score object
-    
+
     It returns a list with all the parts that contain lyrics
-    
+
     For example:
     >>> import music21
     >>> s = music21.converter.parse('sdxp-WoHeNi-SiLangTanMu.xml')
@@ -1649,20 +1647,20 @@ def floatOrFraction(strValue):
     '''
     It takes a string with a numerical value and analyses if it is a float or
     a fractions.Fraction object.
-    
+
     Parameter:
     - strValue -- str, a numercial value
-    
+
     It returns a flot or a fractions.Fraction object. If the input is an empty
     string, it returns None
-    
+
     For example:
     >>> floatOrFraction('1277/6')
     Fraction(1277, 6)
     >>> floatOrFraction('164')
     164.0
     >>> floatOrFraction('')
-    >>> 
+    >>>
     '''
     if '/' in strValue:
         numerator = int(strValue.split('/')[0])
@@ -1683,7 +1681,7 @@ def plottingParameters(material, count, yValues):
     collectLineJudouMaterial functions, a normalization method a list with non
     normalized values and it normalizes these values according to the given
     method, as well as it establishes some stylistic elements for plotting.
-    
+
     Parameters:
     - material -- the dictionary returned by either the collectLineMaterial or
           the collectLineJudouMaterial functions
@@ -1691,7 +1689,7 @@ def plottingParameters(material, count, yValues):
           of all the computed values, 'max' for normalizing the results to the
           maximum computed value, and 'abs' for no normalization
     - yValues -- numpy.ndarray, a numpy array with the non normalized values
-    
+
     It returns the following outputs:
     - a numpy.ndarray with the normalized values
     - a tuple of integers with the limits for the x axis of a matplotlib.pyplot
@@ -1701,16 +1699,16 @@ def plottingParameters(material, count, yValues):
           matplotlib.pyplot bar plot
     - a string with the code for the hatch of the bars of a matplotlib.pyplot
           bar plot
-          
+
     For example:
     >>> import numpy
     >>> material = collectLineMaterial(ln, hangdang=['dan'], shengqiang=['xipi'
     ], banshi=['erliu'])
-    
+
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
@@ -1785,7 +1783,7 @@ def plotting(filename, xPositions, xLabels, yValues, title=None, limX=None,
     It takes all the parameters needed to plot a matplotlib.pyplot bar plot.
     This function is used in the pitchHistogram, pitchHistogramLineJudou, and
     intervalHistogram functions.
-    
+
     Parameters:
     - filename -- str, path to the file to save the plot
     - xPositions -- numpy.ndarray, integers with the x axis values
@@ -1806,7 +1804,7 @@ def plotting(filename, xPositions, xLabels, yValues, title=None, limX=None,
     - yticks_fontsize -- int, size of the font for the y axis' ticks
     - xLabel_fontsize -- int, size of the font for the x axis' label
     - yLabel_fontsize -- int, size of the font for the y axis' label
-    
+
     It returns an image file saved in the path input in the filename parameter.
     '''
 
@@ -1839,7 +1837,6 @@ def plotting(filename, xPositions, xLabels, yValues, title=None, limX=None,
         plt.title(title, fontsize=title_fontsize)
     plt.tight_layout()
     plt.savefig(filename)
-#    plt.show()
 
     print('"' + filename + '" plotted and saved.')
 
@@ -1850,7 +1847,7 @@ def printingFound(rubric, hd, sq, bs, ju, found_lines):
     It checks if the collectLineMaterial and collectLineJudouMaterial functions
     retrieve lines for all the combinations of the input data, and it prints a
     message related to the found lines.
-    
+
     Parameters:
     - rubric -- dict, first element of the list returned by the
           collectLineMaterial and the collectLineJudouMaterial functions
@@ -1860,12 +1857,12 @@ def printingFound(rubric, hd, sq, bs, ju, found_lines):
     - ju -- [str], list of line types
     - found_lines -- int, number of lines retrieved by the collectLineMaterial
           and the collectLineJudouMaterial functions
-          
+
     It prints a message to the console with the number of lines retrieved, and,
     in case, a warning message for the instances for which no lines are
     retrieved.
     '''
-    
+
     if found_lines == 0:
         message = '\nALERT: no lines found for any combination of the '\
                   'elements inputted. The program will exit.'
@@ -1906,7 +1903,7 @@ def findCadentialNotes(linesData, hd, sq, bs, ju, includeGraceNotes=True):
     same folder as the MusicXML scores of the Jingju Music Scores Collection,
     it retrieves all the pitches that appear as cadential notes for the three
     sections of the lines that meet the input criteria.
-    
+
     Parameters:
     - linesData -- str, path to the lines_data.csv file
     - hd -- [str], list of role types
@@ -1915,7 +1912,7 @@ def findCadentialNotes(linesData, hd, sq, bs, ju, includeGraceNotes=True):
     - ju -- [str], list of line types
     - includeGraceNotes -- bool, if True, grace notes are also computed. If
           False, grace notes are ignored
-    
+
     It returns two lists:
     - [str], a list with the name of all the pitches that appear as cadential
           notes for the three sections of the retrieved lines
@@ -1923,14 +1920,14 @@ def findCadentialNotes(linesData, hd, sq, bs, ju, includeGraceNotes=True):
           the previous list and in the same order. They contain three floats,
           accounting for the percentage that the corresponding pitch appears as
           cadential note in the three line sections
-    
+
     For example:
     >>> findCadentialNotes(ln, ['dan'], ['xipi'], ['erliu'], ['s'])
-    
+
     Retrieving sections for lines that meet the given criteria...
-    
+
     6 lines were retrieved for the combination of dan, xipi, erliu and s.
-    
+
     Processing scores:
             Parsing daxp-ChunQiuTing-SuoLinNang.xml
             Parsing daxp-QiaoLouShang-HuangShanLei.xml
@@ -1940,14 +1937,14 @@ def findCadentialNotes(linesData, hd, sq, bs, ju, includeGraceNotes=True):
       array([ 66.66666667,  33.33333333,  83.33333333]),
       array([  0.        ,  16.66666667,  16.66666667])])
     '''
-    
+
     # Collect material
     material = collectLineJudouMaterial(linesData, hangdang=hd, shengqiang=sq,
                                         banshi=bs, judou=ju)
-    
+
     # Find cadential notes
     cadNotCount = [{}, {}, {}]
-    
+
     print('\nProcessing scores:')
 
     for score in material[1:]:
@@ -2009,24 +2006,24 @@ def findCadentialNotes(linesData, hd, sq, bs, ju, includeGraceNotes=True):
         sortedValues.append(np.array(row))
 
     return sortedNoteNames, sortedValues
-    
+
 
 
 def getAmbitus(material):
     '''
     Given the list returned by the collectLineMaterial function it computes the
     overall ambitus for all the retrieved lines.
-    
+
     It returns a music21.interval.Interval corresponding to the ambitus.
-    
+
     For example:
     >>> material = collectLineMaterial(ln, hangdang=['dan'], shengqiang=['xipi'
     ], banshi=['erliu'])
-    
+
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
@@ -2083,25 +2080,25 @@ def findScoreByPitchThreshold(material, thresholdPitch, lowHigh):
     pitch, it looks for the scores contained in the input list in which the
     lines retrieved by the collectLineMaterial function contain pitches higher
     or lower than the given pitch threshold.
-    
+
     Parameters:
     - material -- list, the list returned by the collectLineMaterial function
     - thresholdPitch -- int, midi value of the threshold pitch
     - lowHigh -- str, it takes two values, either 'low' or 'high'. If 'low', it
           searches for pitches lower than the threshold, if 'high', it searches
           for pitches higher than the threshold
-    
+
     It returns a list with the file names of the scores in which pitches that
     go beyond the given threshold are found.
-    
+
     For example:
     >>> material = collectLineMaterial(ln, hangdang=['dan'], shengqiang=['xipi'
     ], banshi=['erliu'])
-    
+
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
@@ -2157,22 +2154,22 @@ def findScoreByPitch(material, pitchList):
     collectLineMaterial contain any of the input pitches. If a match is found,
     the corresponding score is open in the display format defined by the user
     in music21 with the matching pitches in red.
-    
+
     Parameters:
     - material -- list, the list returned by the collectLineMaterial function
     - pitchList -- [str], a list of pitches in the format returned by the
           nameWithOctave method of music21.note.Note objects
-    
+
     It returns a list with the paths of the scores for which a match is found.
-    
+
     For example:
     >>> material = collectLineMaterial(ln, hangdang=['dan'], shengqiang=['xipi'
     ], banshi=['erliu'])
-    
+
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
@@ -2238,7 +2235,7 @@ def findScoreByInterval(material, intvlList, directedInterval=False,
     collectLineMaterial contain any of the input intervals. If a match is
     found, the corresponding score is open in the display format defined by the
     user in music21 with the matching intervals in red.
-    
+
     Parameter:
     - material -- list, the list returned by the collectLineMaterial function
     - intvlList -- [str], a list of intervals in the format returned by the
@@ -2252,17 +2249,17 @@ def findScoreByInterval(material, intvlList, directedInterval=False,
           that those two notes form
     - ignoreGraceNotes -- bool, if True, grace notes are ignored. If False,
           grace notes are considered for the computation of intervals
-    
+
     It returns a list with the paths of the scores for which a match is found.
-    
+
     For example:
     >>> material = collectLineMaterial(ln, hangdang=['dan'], shengqiang=['xipi'
     ], banshi=['erliu'])
-    
+
     Retrieving lines that meet the given criteria...
-    
+
     12 lines were retrieved for combinations of dan, xipi, erliu, s and x.
-    
+
     WARNING: no results found for
             s1
             s2
