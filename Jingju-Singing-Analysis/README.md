@@ -26,7 +26,7 @@ The **Jingju Singing Analysis** code is comprised by the following two scripts:
  - `melodicDensity` analyses the melodic density as notes and the melodic density as durations.
 
 
-- `JMSC_plots.py` can be run from the terminal in order to reproduce all the plots and tables used in Caro (2018). It can also be used to compute a subset of information types listed above. All these plots and tables are also available in the **plots** folder of this repository.
+- `JMSC_plots.py` can be run with a single command line from the terminal in order to reproduce all the plots and tables used in Caro (2018). It can also be used to compute a subset of information types listed above. All these plots and tables are also available in the **plots** folder of this repository.
 
 ## Using the code
 The **Jingju Singing Analysis** code is written in Python 3.5.2, so for its use it is required a version of Python 3.
