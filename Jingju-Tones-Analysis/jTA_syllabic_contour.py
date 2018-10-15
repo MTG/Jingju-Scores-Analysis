@@ -2,11 +2,16 @@
 
 
 
-# jTA_syllabic_contour extracts statistical information about the melodic
-# contour of sung syllables in terms of their tonal categories from jingju
-# music scores.
+# jTA_syllabic_contour.py is a script for reproducing with a single command line
+# the results presented in Table 12 in:
+#   Caro Repetto, Rafael (2018) *The musical dimension of Chinese traditional
+#   theatre: An analysis from computer aided musicology*, PhD thesis,
+#   Universitat Pompeu Fabra, Barcelona, Spain
+# regarding the syllabic contour relationship between linguistic tones and
+# melody in the arias from the Jingju Music Scores Collection
+# (https://doi.org/10.5281/zenodo.1285612).
 #
-# Copyright (C) 2017 Music Technology Group, Universitat Pompeu Fabra
+# Copyright (C) 2018 Music Technology Group, Universitat Pompeu Fabra
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -95,7 +100,7 @@ if __name__=='__main__':
                                                        ' 1 A')
 
     args = parser.parse_args()
-    
+
     path = args.path
     if path[-1] == '/':
         linesData = path + 'lines_data.csv'
@@ -105,7 +110,7 @@ if __name__=='__main__':
     q = []
     if args.query != None:
         q = args.query
-    
+
     material = jTA.toneMaterialPerLine(linesData, hd=args.hangdang,
                                        sq=args.shengqiang, bs=args.banshi,
                                        ju=args.line)

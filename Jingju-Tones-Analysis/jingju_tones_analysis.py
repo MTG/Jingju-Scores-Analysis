@@ -3,9 +3,10 @@
 
 
 # Jingju Tones Analysis is a collection of tools for the statistical analysis
-# of the relationship between tones and melody in jingju music scores.
+# of the relationship between tones and melody in the Jingju Music Scores
+# Collection (https://doi.org/10.5281/zenodo.1285612).
 #
-# Copyright (C) 2017 Music Technology Group, Universitat Pompeu Fabra
+# Copyright (C) 2018 Music Technology Group, Universitat Pompeu Fabra
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
