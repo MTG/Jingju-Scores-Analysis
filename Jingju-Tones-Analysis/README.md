@@ -28,33 +28,33 @@ The **Jingju Tones Analysis** code is written in Python 3.5.2, so for its use it
 
 Before using the code, the dependencies listed in the requirements.txt file should be installed. This can be done from the terminal (using the package manager pip), by executing the following command from the directory where the requirements.txt file is stored:
 
-    `pip install -r requirements.txt`
+    pip install -r requirements.txt
 
 Since the code is created to be used with the **JMSC**, the lines_data.csv should be saved in the same folder as the MusicXML scores of the collection.
 
 To use the `jTA_syllabic_contour.py` script from the terminal, the following command should be executed from the directory where this script is saved:
 
-    `python jTA_syllabic_contour.py PATH`
+    python jTA_syllabic_contour.py PATH
 
 where `PATH` should be the path to directory where the MusicXML scores and the lines_data.csv file are stored.
 
 The `jTA_syllabic_contour.py` script offers extra options. For a detailed description of how using the code, including these options, the following command can be executed from the directory where this script is saved:
 
-    `python jTA_syllabic_contour.py -h`
+    python jTA_syllabic_contour.py -h
 
 The `jTA_pairwise_relationship.py` script can be used for computing either first-first or last-first pairwise relationships from the terminal. In order to compute the first-first pairwise relationship, the following command should be executed from the directory where this script is saved:
 
-    `python jTA_pairwise_relationship.py PATH 0 0`
+    python jTA_pairwise_relationship.py PATH 0 0
 
 In order to compute the last-first pairwise relationship, the following command should be executed from the directory where this script is saved:
 
-    `python jTA_pairwise_relationship.py PATH 1 0`
+    python jTA_pairwise_relationship.py PATH 1 0
 
 In both cases, `PATH` is the path to directory where the MusicXML scores and the lines_data.csv file are stored.
 
 The `jTA_pairwise_relationship.py` script also offers extra options. For a detailed description of how using the code, including these options, the following command can be executed from the directory where this script is saved:
 
-    `python jTA_pairwise_relationship.py -h`
+    python jTA_pairwise_relationship.py -h
 
 For the use of the functions in the `jingju_tones_analysis.py`, a detailed description of each of them is available in their respective docstrings.
 

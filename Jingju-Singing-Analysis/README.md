@@ -33,19 +33,19 @@ The **Jingju Singing Analysis** code is written in Python 3.5.2, so for its use 
 
 Before using the code, the dependencies listed in the requirements.txt file should be installed. This can be done from the terminal (using the package manager pip), by executing the following command from the directory where the requirements.txt file is stored:
 
-    `pip install -r requirements.txt`
+    pip install -r requirements.txt
 
 Since the code is created to be used with the **JMSC**, the lines_data.csv should be saved in the same folder as the MusicXML scores of the collection.
 
 To use the `JMSC_plots.py` script from the terminal, the following command should be executed from the directory where this script is saved:
 
-    `python JMSC_plots.py PATH\lines_data.csv`
+    python JMSC_plots.py PATH\lines_data.csv
 
 where `PATH` should be the path to the lines_data.csv file.
 
 The `JMSC_plots.py` script offer extra options, in order to select a subsect of information types or specifying a directory for saving the returned plots and tables. For a detailed description of how using the code, including these options, the following command can be executed from the directory where this script is saved:
 
-    `python JMSC_plots.py -h`
+    python JMSC_plots.py -h
 
 For the use of the functions in the `jingju_singing_analysis.py`, a detailed description of each of them is available in their respective docstrings.
 
