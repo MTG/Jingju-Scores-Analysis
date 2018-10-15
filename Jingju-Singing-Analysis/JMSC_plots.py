@@ -140,7 +140,7 @@ phlj = [['phlj-ls.png', ls, ex, bs, ju],
 ihd = [['ihd-ls.png', ls, ex, bs, ju],
        ['ihd-da.png', da, ex, bs, ju],
        ['ihd-eh.png', ld, eh, bs, ju],
-       ['ihd-xp-png', ld, xp, bs, ju],
+       ['ihd-xp.png', ld, xp, bs, ju],
        ['ihd-ls-eh.png', ls, eh, bs, ju],
        ['ihd-ls-eh-mb.png', ls, eh, mb, ju],
        ['ihd-ls-eh-yb.png', ls, eh, yb, ju],
@@ -159,7 +159,7 @@ ihd = [['ihd-ls.png', ls, ex, bs, ju],
 ihn = [['ihn-ls.png', ls, ex, bs, ju],
        ['ihn-da.png', da, ex, bs, ju],
        ['ihn-eh.png', ld, eh, bs, ju],
-       ['ihn-xp-png', ld, xp, bs, ju],
+       ['ihn-xp.png', ld, xp, bs, ju],
        ['ihn-ls-eh.png', ls, eh, bs, ju],
        ['ihn-ls-eh-mb.png', ls, eh, mb, ju],
        ['ihn-ls-eh-yb.png', ls, eh, yb, ju],
@@ -384,7 +384,7 @@ def plot_ihn(linesData, root_folder):
 
     to_print = ''
 
-    ihn_folder = 'not_directed_interval_histograms'
+    ihn_folder = 'non_directed_interval_histograms'
     folder = root_folder + '/' + ihn_folder
     if ihn_folder not in os.listdir(root_folder):
         print('\nThe "' + folder + '" folder was created to save the interval'\
