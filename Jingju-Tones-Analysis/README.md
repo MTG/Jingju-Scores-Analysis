@@ -1,6 +1,6 @@
 # Jingju Tones Analysis
 
-**Jingju Tones Analysis** is a collection of tools for extracting statistical information about the relationship between linguistic tones and melody from machine readable jingju music scores, having the melodic line as basic analysis unit. It is tailored to be used with the [**Jingju Music Scores Collection**](https://doi.org/10.5281/zenodo.1285612) (**JMSC**), and for the research purposes of the PhD thesis *The musical dimension of
+**Jingju Tones Analysis** is a collection of tools for extracting statistical information about the relationship between linguistic tones and melody from machine readable jingju music scores, having the melodic line as basic analysis unit. It is tailored to be used with the [**Jingju Music Scores Collection**](http://doi.org/10.5281/zenodo.1464653) (**JMSC**), and for the research purposes of the PhD thesis *The musical dimension of
 Chinese traditional theatre: An analysis from computer aided musicology* (Caro 2018). The code computes information for two relationship types:
 - syllabic contour, and
 - pairwise relationship, both considering the first note of two consecutive syllables (first-first pairwise relationship), or the last note and the first note of two consecutive syllables (last-first pairwise relationship).

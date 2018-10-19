@@ -1,6 +1,6 @@
 # Jingju Singing Analysis
 
-The **Jingju Singing Analysis** code is a collection of tools for extracting statistical and quantitative information from machine readable jingju music scores, having the melodic line as basic analysis unit. It is tailored to be used with the [**Jingju Music Scores Collection**](https://doi.org/10.5281/zenodo.1285612) (**JMSC**), and for the research purposes of the PhD thesis *The musical dimension of
+The **Jingju Singing Analysis** code is a collection of tools for extracting statistical and quantitative information from machine readable jingju music scores, having the melodic line as basic analysis unit. It is tailored to be used with the [**Jingju Music Scores Collection**](http://doi.org/10.5281/zenodo.1464653) (**JMSC**), and for the research purposes of the PhD thesis *The musical dimension of
 Chinese traditional theatre: An analysis from computer aided musicology* (Caro 2018). The code computes the following information:
 - pitch histograms per line,
 - pitch histograms per line sections,

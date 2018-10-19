@@ -4,7 +4,7 @@
 
 # JMSC_plots.py is a script for reproducing with a single command line all the
 # plots and tables computed from the Jingju Music Scores Collection
-# (https://doi.org/10.5281/zenodo.1285612) and used in the following
+# (http://doi.org/10.5281/zenodo.1464653) and used in the following
 # publication:
 #   Caro Repetto, Rafael (2018) *The musical dimension of Chinese traditional
 #   theatre: An analysis from computer aided musicology*. PhD thesis,

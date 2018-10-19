@@ -9,7 +9,7 @@
 #   Universitat Pompeu Fabra, Barcelona, Spain
 # regarding the syllabic contour relationship between linguistic tones and
 # melody in the arias from the Jingju Music Scores Collection
-# (https://doi.org/10.5281/zenodo.1285612).
+# (http://doi.org/10.5281/zenodo.1464653).
 #
 # Copyright (C) 2018 Music Technology Group, Universitat Pompeu Fabra
 #

@@ -4,7 +4,7 @@
 
 # Jingju Singing Analysis is a collection of tools for automatically extracting
 # statistical and quantitative information from the Jingju Music Scores
-# Collection (https://doi.org/10.5281/zenodo.1285612).
+# Collection (http://doi.org/10.5281/zenodo.1464653).
 #
 # Copyright (C) 2018 Music Technology Group, Universitat Pompeu Fabra
 #

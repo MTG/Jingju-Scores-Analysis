@@ -1,6 +1,6 @@
 # Jingju Scores Analysis
 
-This is a collection of tools for automatically extracting statistical and quantitative information from the [**Jingju Music Scores Collection**](https://doi.org/10.5281/zenodo.1285612) (**JMSC**). The information can be restricted to any combination of the four elements of the jingju musical system, namely role type, *shengqiang*, *banshi* and line type.
+This is a collection of tools for automatically extracting statistical and quantitative information from the [**Jingju Music Scores Collection**](http://doi.org/10.5281/zenodo.1464653) (**JMSC**). The information can be restricted to any combination of the four elements of the jingju musical system, namely role type, *shengqiang*, *banshi* and line type.
 
 ## Content
 
